@@ -1,0 +1,45 @@
+
+<h1>Modifier le voyage</h1>
+
+<%= form_for(@trip, url: trip_path(@trip), method: :patch) do |f| %>
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+      <ul>
+      <% @trip.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :destination %>
+    <%= f.text_field :destination %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :debut %>
+    <%= f.date_field :debut %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fin %>
+    <%= f.date_field :fin %>
+  </div>
+      <div class="field">
+    <%= f.label :user_id, "Utilisateur" %>
+    <%= f.collection_select :user_id, User.all, :id, :name, prompt: "Sélectionner un utilisateur" %>
+     </div>
+
+  <div class="actions">
+    <%= f.submit 'Enregistrer les modifications' %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour', trips_path %>

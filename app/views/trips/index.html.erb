@@ -1,0 +1,39 @@
+<div>
+  <h1 class="font-bold text-4xl mb-4">Liste des voyages</h1>
+
+  <% if @trips.any? %>
+    
+    <table class="border-collapse border border-gray-300">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-300 px-4 py-2">Destination</th>
+          <th class="border border-gray-300 px-4 py-2">Description</th>
+          <th class="border border-gray-300 px-4 py-2">Date de début</th>
+          <th class="border border-gray-300 px-4 py-2">Date de fin</th>
+          <th class="border border-gray-300 px-4 py-2">Utilisateur</th>
+          <th class="border border-gray-300 px-4 py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @trips.each do |trip| %>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2"><%= trip.destination %></td>
+            <td class="border border-gray-300 px-4 py-2"><%= trip.description %></td>
+            <td class="border border-gray-300 px-4 py-2"><%= trip.debut %></td>
+            <td class="border border-gray-300 px-4 py-2"><%= trip.fin %></td>
+            <td class="border border-gray-300 px-4 py-2"><%= trip.user.name %></td>
+            <td class="border border-gray-300 px-4 py-2">
+              <%= link_to 'Voir les détails', trip_path(trip), class: 'text-blue-500 hover:underline' %> |
+              <%= link_to 'Modifier', edit_trip_path(trip), class: 'text-green-500 hover:underline' %> |
+              <%= link_to 'Supprimer', delete_trip_path(trip), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'text-red-500 hover:underline' %>
+              
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Ajouter un voyage', new_trip_path, class: 'text-blue-500 hover:underline' %> 
+  <% else %>
+    <p class="mt-4">Aucun voyage trouvé.</p>
+  <% end %>
+</div>

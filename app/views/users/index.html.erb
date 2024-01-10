@@ -1,0 +1,32 @@
+<div>
+  <h1 class="font-bold text-4xl">Liste des utilisateurs</h1>
+
+  <% if @users.any? %>
+    <table class="border-collapse border border-gray-300 mt-4">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="border border-gray-300 px-4 py-2">Nom</th>
+          <th class="border border-gray-300 px-4 py-2">Email</th>
+          <th class="border border-gray-300 px-4 py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="border border-gray-300 px-4 py-2"><%= user.name %></td>
+            <td class="border border-gray-300 px-4 py-2"><%= user.email %></td>
+             <td class="border border-gray-300 px-4 py-2">
+              <%= link_to 'Voir les détails', user_path(user), class: 'text-blue-500 hover:underline' %> |
+              <%= link_to 'Modifier', edit_user_path(user), class: 'text-green-500 hover:underline' %> |
+              <%= link_to 'Supprimer', delete_user_path(user), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'text-red-500 hover:underline' %>
+              
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+     <%= link_to 'Ajouter un utilisateur', new_user_path(), class: 'text-blue-500 hover:underline' %> 
+  <% else %>
+    <p class="mt-4">Aucun utilisateur trouvé.</p>
+  <% end %>
+</div>

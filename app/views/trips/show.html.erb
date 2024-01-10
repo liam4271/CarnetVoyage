@@ -1,0 +1,31 @@
+<h1>Détails du voyage</h1>
+
+<br/>
+<div>
+  <strong>Destination :</strong>
+  <%= @trip.destination %>
+</div>
+<br>
+<div>
+  <strong>Description :</strong>
+  <%= @trip.description %>
+</div>
+<br>
+<div>
+  <strong>Date de début :</strong>
+  <%= @trip.debut %>
+</div>
+<br>
+<div>
+  <strong>Date de fin :</strong>
+  <%= @trip.fin %>
+</div>
+<br>
+<div>
+  <strong>Utilisateur :</strong>
+  <%= @trip.user.name %> <!-- Assurez-vous que la relation user est correctement définie dans votre modèle Trip -->
+</div>
+<br>
+<%= link_to 'Modifier', edit_trip_path(@trip) %> |
+<br>
+<%= link_to 'Retour à la liste des voyages', trips_path %>

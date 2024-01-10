@@ -1,0 +1,32 @@
+<h1>Modifier l'utilisateur</h1>
+
+<%= form_for(@user, url: user_path(@user), method: :patch) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prevented this user from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <!-- Ajoutez d'autres champs pour les attributs de l'utilisateur que vous souhaitez modifier -->
+
+  <div class="actions">
+    <%= f.submit 'Enregistrer les modifications' %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour', users_path %>

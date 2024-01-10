@@ -1,0 +1,23 @@
+<h1>Créer un nouvel utilisateur</h1>
+
+<%= form_for(@user) do |f| %>
+  <!-- Champs du formulaire pour créer un nouvel utilisateur -->
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <!-- Ajoutez d'autres champs pour les attributs de l'utilisateur que vous souhaitez créer -->
+
+  <div class="actions">
+    <%= f.submit 'Créer l\'utilisateur' %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour', users_path %>

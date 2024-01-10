@@ -1,0 +1,19 @@
+<h1>Détails de l'utilisateur</h1>
+
+<br/>
+<div>
+  <strong>Nom :</strong>
+  <%= @user.name %>
+</div>
+<br>
+<div>
+  <strong>Email :</strong>
+  <%= @user.email %>
+</div>
+<br>
+<!-- Ajoutez d'autres attributs de l'utilisateur que vous souhaitez afficher -->
+
+<br>
+<%= link_to 'Modifier', edit_user_path(@user) %> |
+<br>
+<%= link_to 'Retour à la liste des utilisateurs', users_path %>
